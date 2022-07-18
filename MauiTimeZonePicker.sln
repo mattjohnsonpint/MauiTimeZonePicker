@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.105
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MauiTimeZonePicker", "src\MauiTimeZonePicker.csproj", "{FBF9E417-0F84-4A66-B30B-607413E37D62}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MauiTimeZonePicker.Tests", "test\MauiTimeZonePicker.Tests.csproj", "{D495650D-CE5B-4589-A987-CFBE7C96C5F9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MauiTimeZonePickerSampleApp", "sample\MauiTimeZonePickerSampleApp.csproj", "{2DE7C281-D560-4165-987F-622C77C2928D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FBF9E417-0F84-4A66-B30B-607413E37D62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBF9E417-0F84-4A66-B30B-607413E37D62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBF9E417-0F84-4A66-B30B-607413E37D62}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBF9E417-0F84-4A66-B30B-607413E37D62}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D495650D-CE5B-4589-A987-CFBE7C96C5F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D495650D-CE5B-4589-A987-CFBE7C96C5F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D495650D-CE5B-4589-A987-CFBE7C96C5F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D495650D-CE5B-4589-A987-CFBE7C96C5F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2DE7C281-D560-4165-987F-622C77C2928D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DE7C281-D560-4165-987F-622C77C2928D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DE7C281-D560-4165-987F-622C77C2928D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DE7C281-D560-4165-987F-622C77C2928D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
