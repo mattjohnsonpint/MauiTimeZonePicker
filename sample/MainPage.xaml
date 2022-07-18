@@ -23,13 +23,6 @@
                 HorizontalOptions="Center" />
 
             <mtzp:TimeZonePicker/>
-            
-            <Button
-                x:Name="CounterBtn"
-                Text="Click me"
-                SemanticProperties.Hint="Counts the number of times you click"
-                Clicked="OnCounterClicked"
-                HorizontalOptions="Center" />
 
         </VerticalStackLayout>
     </ScrollView>
