@@ -46,7 +46,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\src\MauiTimeZonePicker.csproj" />
+		<Using Include="MauiTimeZonePicker" />
+	  	<ProjectReference Include="..\src\MauiTimeZonePicker.csproj" />
 	</ItemGroup>
 
 </Project>
