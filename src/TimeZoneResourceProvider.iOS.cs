@@ -20,10 +20,8 @@ public class TimeZoneResourceProvider : ITimeZoneResourceProvider, IDisposable
         _formatter.DefaultDate = _referenceDate;
     }
 
-    public IReadOnlyList<string> GetIanaTimeZoneIds()
-    {
-        return TimeZoneInfo.GetSystemTimeZones().Select(tzi => tzi.Id).ToList();
-    }
+    public IReadOnlyList<string> GetIanaTimeZoneIds() =>
+        TimeZoneInfo.GetSystemTimeZones().Select(tzi => tzi.Id).ToList();
 
     public string GetGenericName(string timeZoneId)
     {
