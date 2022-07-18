@@ -20,6 +20,11 @@ public class TimeZoneResourceProvider : ITimeZoneResourceProvider, IDisposable
         _formatter.DefaultDate = _referenceDate;
     }
 
+    public IReadOnlyList<string> GetIanaTimeZoneIds()
+    {
+        return TimeZoneInfo.GetSystemTimeZones().Select(tzi => tzi.Id).ToList();
+    }
+
     public string GetGenericName(string timeZoneId)
     {
         using var zone = new NSTimeZone(timeZoneId);
