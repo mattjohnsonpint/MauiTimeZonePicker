@@ -1,6 +1,18 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
+		<Description>Time Zone Picker control for .NET MAUI</Description>
+		<Authors>Matt Johnson-Pint</Authors>
+		<PackageTags></PackageTags>
+		<PackageProjectUrl>https://github.com/mattjohnsonpint/MauiTimeZonePicker</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/mattjohnsonpint/MauiTimeZonePicker</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+    	<RepositoryRoot>$(MSBuildThisFileDirectory)</RepositoryRoot>
+		<PublishRepositoryUrl>true</PublishRepositoryUrl>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<Version>0.1.0-preview</Version>
+
 		<TargetFrameworks>net6.0;net6.0-android;net6.0-ios;net6.0-maccatalyst</TargetFrameworks>
 		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net6.0-windows10.0.19041.0</TargetFrameworks>
 		<UseMaui>true</UseMaui>
@@ -37,6 +49,10 @@
 	<ItemGroup Condition="$(TargetFramework.Contains('-android')) OR $(TargetFramework.Contains('-ios')) OR $(TargetFramework.Contains('-maccatalyst')) OR $(TargetFramework.Contains('-windows'))">
 		<Compile Remove="**\*.Other.cs" />
 		<None Include="**\*.Other.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Include="..\README.md" Pack="true" PackagePath="\"/>
 	</ItemGroup>
 
 </Project>
