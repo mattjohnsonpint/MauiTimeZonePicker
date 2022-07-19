@@ -50,4 +50,8 @@
 	  	<ProjectReference Include="..\src\MauiTimeZonePicker.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <PackageReference Include="Sentry.Maui" Version="3.19.0-preview.2" />
+	</ItemGroup>
+
 </Project>
