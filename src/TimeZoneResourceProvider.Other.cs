@@ -2,7 +2,7 @@ namespace MauiTimeZonePicker;
 
 public partial class TimeZoneResourceProvider
 {
-    public IReadOnlyList<string> GetIanaTimeZoneIds() =>
+    public IReadOnlyList<string> GetTimeZoneIds() =>
         TimeZoneInfo.GetSystemTimeZones().Select(tzi => tzi.Id).ToList();
 
     public string GetGenericName(string timeZoneId)

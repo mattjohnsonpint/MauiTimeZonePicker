@@ -9,7 +9,7 @@ public partial class TimeZoneResourceProvider
     private readonly DateTimeOffset _referenceDate = DateTimeOffset.UtcNow;
     private readonly string _locale = GetLocale();
 
-    public IReadOnlyList<string> GetIanaTimeZoneIds()
+    public IReadOnlyList<string> GetTimeZoneIds()
     {
         var list = new List<string>
         {

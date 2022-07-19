@@ -20,7 +20,7 @@ private readonly Locale _locale;
         _genericTzFormatter = DateFormat.GetPatternInstance(DateFormat.GenericTz, _locale)!;
     }
 
-    public IReadOnlyList<string> GetIanaTimeZoneIds() =>
+    public IReadOnlyList<string> GetTimeZoneIds() =>
         TimeZoneInfo.GetSystemTimeZones().Select(tzi => tzi.Id).ToList();
 
     public string GetGenericName(string timeZoneId)

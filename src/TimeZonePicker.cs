@@ -6,7 +6,7 @@ public class TimeZonePicker : Picker
     
     public TimeZonePicker()
     {
-        var zones = _resourceProvider.GetIanaTimeZoneIds();
+        var zones = _resourceProvider.GetTimeZoneIds();
         var items = zones.Select(zone =>
         {
             var genericName = _resourceProvider.GetGenericName(zone);
