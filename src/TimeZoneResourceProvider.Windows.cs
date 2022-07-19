@@ -58,14 +58,14 @@ public partial class TimeZoneResourceProvider
     public string GetGenericName(string timeZoneId)
     {
         var pattern = Helpers.TimeZoneIsUtc(timeZoneId) ? "zzzz" : "vvvv";
-        return GetPatternStringFromIcu(timeZoneId, pattern);
+        return GetPatternStringFromIcu(timeZoneId, pattern)!;
     }
 
-    public string GetLocation(string timeZoneId)
+    public string? GetLocation(string timeZoneId)
     {
         if (Helpers.TimeZoneIsUtc(timeZoneId))
         {
-            return "";
+            return null;
         }
 
         var location = GetPatternStringFromIcu(timeZoneId, "VVV");
@@ -73,10 +73,10 @@ public partial class TimeZoneResourceProvider
         // TODO: Augment with region name.  Since there's no C API, we'll need to re-implement this:
         // https://github.com/microsoft/icu/blob/583363f0214392b98b47019f811947309dab7c3e/icu/icu4c/source/i18n/timezone.cpp#L1134-L1157
 
-        return location;
+        return string.IsNullOrWhiteSpace(location) ? null : location;;
     }
 
-    private string GetPatternStringFromIcu(string timeZoneId, string pattern)
+    private string? GetPatternStringFromIcu(string timeZoneId, string pattern)
     {
         IntPtr formatter = default;
         try
@@ -85,11 +85,11 @@ public partial class TimeZoneResourceProvider
             formatter = NativeMethods.OpenDateFormatter(udat_pattern, udat_pattern, _locale, timeZoneId, -1, pattern, -1, out var errorCode);
             if (errorCode > 0)
             {
-                return "";
+                return null;
             }
 
             var result = NativeMethods.FormatDate(formatter, _referenceDate, out errorCode);
-            return errorCode > 0 ? "" : result;
+            return errorCode > 0 ? null : result;
         }
         finally
         {

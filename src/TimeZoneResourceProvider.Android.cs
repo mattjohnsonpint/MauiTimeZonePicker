@@ -44,7 +44,7 @@ private readonly Locale _locale;
         return name ?? "";
     }
 
-    public string GetLocation(string timeZoneId)
+    public string? GetLocation(string timeZoneId)
     {
         timeZoneId = Android.Icu.Util.TimeZone.GetCanonicalID(timeZoneId) ?? timeZoneId;
         
@@ -61,7 +61,7 @@ private readonly Locale _locale;
             }
         }
 
-        return location ?? "";
+        return string.IsNullOrWhiteSpace(location) ? null : location;
     }
 
     private static Locale GetCurrentLocale()

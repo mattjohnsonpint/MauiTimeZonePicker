@@ -29,7 +29,7 @@ public partial class TimeZoneResourceProvider : IDisposable
         return zone.GetLocalizedName(NSTimeZoneNameStyle.Generic, _locale);
     }
 
-    public string GetLocation(string timeZoneId)
+    public string? GetLocation(string timeZoneId)
     {
         // Get the exemplar location for the time zone
         // See https://unicode-org.github.io/icu/userguide/format_parse/datetime/#date-field-symbol-table
@@ -48,7 +48,7 @@ public partial class TimeZoneResourceProvider : IDisposable
             }
         }
 
-        return location;
+        return string.IsNullOrWhiteSpace(location) ? null : location;
     }
 
     public void Dispose()

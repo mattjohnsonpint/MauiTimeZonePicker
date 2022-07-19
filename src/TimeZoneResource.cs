@@ -1,10 +1,12 @@
+using System.Text;
+
 namespace MauiTimeZonePicker;
 
 public class TimeZoneResource
 {
     public string Id { get; init; } = null!;
     public string Name { get; init; } = null!;
-    public string Location { get; init; } = null!;
+    public string? Location { get; init; }
     public TimeZoneInfo TimeZone { get; init; } = null!;
 
     public string BaseOffset => Helpers.TimeZoneIsUtc(Id)
@@ -17,10 +19,18 @@ public class TimeZoneResource
 
     public override string ToString()
     {
-        var baseOffset = BaseOffset;
-        var currentOffset = CurrentOffset;
-        var extraInfo = baseOffset != currentOffset ? $" (currently {currentOffset})" : "";
-        
-        return $"({BaseOffset}) {Name} - {Location}{extraInfo}";
+        var sb = new StringBuilder($"({BaseOffset}) {Name}");
+
+        if (Location != null)
+        {
+            sb.Append($" - {Location}");
+        }
+
+        if (BaseOffset != CurrentOffset)
+        {
+            sb.Append($" (currently {CurrentOffset})");
+        }
+
+        return sb.ToString();
     }
 }

@@ -14,9 +14,9 @@ public partial class TimeZoneResourceProvider
         return displayName.Substring(displayName.IndexOf(')') + 1);
     }
 
-    public string GetLocation(string timeZoneId)
+    public string? GetLocation(string timeZoneId)
     {
         // Not available from TimeZoneInfo by default
-        return "";
+        return null;
     }
 }
