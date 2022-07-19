@@ -26,7 +26,7 @@ private readonly Locale _locale;
     public string GetGenericName(string timeZoneId)
     {
         timeZoneId = Android.Icu.Util.TimeZone.GetCanonicalID(timeZoneId) ?? timeZoneId;
-        if (timeZoneId == "Etc/UTC")
+        if (Helpers.TimeZoneIsUtc(timeZoneId))
         {
             return _timeZoneNames.GetTimeZoneDisplayName(timeZoneId, TimeZoneNames.NameType.LongStandard)!;
         }
