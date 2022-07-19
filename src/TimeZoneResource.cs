@@ -19,16 +19,17 @@ public class TimeZoneResource
 
     public override string ToString()
     {
-        var sb = new StringBuilder($"({BaseOffset}) {Name}");
+        var sb = new StringBuilder();
+        
+        sb.AppendLine(Name);
 
         if (Location != null)
         {
-            sb.Append($" - {Location}");
+            sb.AppendLine($"({CurrentOffset}) {Location}");
         }
-
-        if (BaseOffset != CurrentOffset)
+        else
         {
-            sb.Append($" (currently {CurrentOffset})");
+            sb.AppendLine(Location);
         }
 
         return sb.ToString();

@@ -27,7 +27,7 @@
             <Label 
                 x:Name="CurrentTimeText"
                 IsVisible="False"
-                FontSize="32"
+                FontSize="12"
                 HorizontalOptions="Center" />
 
         </VerticalStackLayout>
