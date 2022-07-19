@@ -53,21 +53,6 @@ public class TimeZonePicker : CollectionView, IDisposable
             
             layout.Add(detail);
 
-            // var label2 = new Label
-            // {
-            //     FontSize = 12
-            // };
-            // label2.SetBinding(Label.TextProperty, new MultiBinding
-            // {
-            //     Bindings = new List<BindingBase>()
-            //     {
-            //         new Binding(nameof(TimeZoneResource.CurrentOffset)),
-            //         new Binding(nameof(TimeZoneResource.Location))
-            //     },
-            //     StringFormat = "({0}) {1}"
-            // });
-            // layout.Add(label2);
-
             return layout;
         });
     }
