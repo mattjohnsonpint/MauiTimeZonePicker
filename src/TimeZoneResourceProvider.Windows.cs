@@ -68,7 +68,7 @@ public partial class TimeZoneResourceProvider
             return null;
         }
 
-        var location = GetPatternStringFromIcu(timeZoneId, "VVV");
+        var location = GetPatternStringFromIcu(timeZoneId, "VVV")?.AdjustTimeZoneDisplayText();
 
         // TODO: Augment with region name.  Since there's no C API, we'll need to re-implement this:
         // https://github.com/microsoft/icu/blob/583363f0214392b98b47019f811947309dab7c3e/icu/icu4c/source/i18n/timezone.cpp#L1134-L1157
