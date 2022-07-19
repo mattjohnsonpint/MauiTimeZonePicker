@@ -19,10 +19,11 @@ public partial class MainPage
 		base.OnAppearing();
 		
 		// TODO: The timer is a bit sluggish on Android while scrolling the list of time zones.  Figure out why.
+		//       Disable the timer for now.  The time will only be as current as when the user selected the time zone.
 		_timer = Dispatcher.CreateTimer();
 		_timer.Interval = TimeSpan.FromSeconds(0.1);
 		_timer.Tick += OnTimerTick;
-		_timer.Start();
+		// _timer.Start();
 	}
 
 	private void OnTimerTick(object sender, EventArgs e)
