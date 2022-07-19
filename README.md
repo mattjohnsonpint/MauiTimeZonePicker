@@ -10,6 +10,23 @@ Time Zone Picker control for .NET MAUI
 dotnet add package mjp.MauiTimeZonePicker --prerelease
 ```
 
+## Example Usage
+
+- In your XAML where you want to use the control, add the namespace:
+
+    ```
+    xmlns:mtzp="clr-namespace:MauiTimeZonePicker;assembly=MauiTimeZonePicker"
+    ```
+
+- Then add the control.  Give the instance a name if desired.  Bind to the `SelectedItemChanged` event to respond to selection changes.
+    ```xml
+    <mtzp:TimeZonePicker
+        x:Name="TimeZonePicker"
+        SelectedItemChanged="TimeZoneChanged" />
+    ```
+
+Review the application in the [/sample](sample) directory for futher details. 
+
 ## Screenshots
 
 ### Android
