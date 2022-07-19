@@ -19,7 +19,7 @@
             <Label
                 Text="Time Zone Picker Demo"
                 SemanticProperties.HeadingLevel="Level1"
-                FontSize="32"
+                FontSize="30"
                 HorizontalOptions="Center" />
 
             <mtzp:TimeZonePicker SelectedIndexChanged="TimeZoneChanged" />
