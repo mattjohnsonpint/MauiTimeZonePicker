@@ -34,6 +34,7 @@ public partial class MainPage
 	{
 		var picker = (TimeZonePicker) sender;
 		_selectedTimeZone = (TimeZoneResource) picker.SelectedItem;
+		UpdateCurrentTimeText();
 		
 		SelectedTimeZoneIdText.Text = $"Time Zone ID: {_selectedTimeZone.Id} ";
 		SelectedTimeZoneIdText.IsVisible = true;

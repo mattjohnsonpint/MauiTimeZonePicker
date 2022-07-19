@@ -8,7 +8,7 @@
         <VerticalStackLayout
             Spacing="25"
             Padding="30,0"
-            VerticalOptions="Center">
+            VerticalOptions="Start">
 
             <Image
                 Source="dotnet_bot.png"
@@ -22,8 +22,10 @@
                 FontSize="30"
                 HorizontalOptions="Center" />
 
-            <mtzp:TimeZonePicker SelectedIndexChanged="TimeZoneChanged" />
-            
+            <Border>
+                <mtzp:TimeZonePicker SelectionChanged="TimeZoneChanged" />
+            </Border>
+    
             <Label 
                 x:Name="CurrentTimeText"
                 IsVisible="False"

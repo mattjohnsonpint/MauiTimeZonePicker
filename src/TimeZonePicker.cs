@@ -3,14 +3,73 @@ using System.Collections;
 namespace MauiTimeZonePicker;
 
 
-public class TimeZonePicker : Picker, IDisposable
+public class TimeZonePicker : CollectionView, IDisposable
 {
     private readonly ITimeZoneResourceProvider _resourceProvider = new TimeZoneResourceProvider();
     
     public TimeZonePicker()
     {
-        Title = "Pick a time zone...";
+        Header = "Pick a time zone...";
         ItemsSource = (IList) _resourceProvider.GetTimeZoneResources();
+        VerticalScrollBarVisibility = ScrollBarVisibility.Always;
+        MaximumHeightRequest = 200;
+        SelectionMode = SelectionMode.Single;
+
+        ((LinearItemsLayout) ItemsLayout).ItemSpacing = 10;
+
+        ItemTemplate = new DataTemplate(() =>
+        {
+            var layout = new VerticalStackLayout();
+
+            var name = new Label
+            {
+                FontSize = 16,
+                FontAttributes = FontAttributes.Bold
+            };
+            name.SetBinding(Label.TextProperty, nameof(TimeZoneResource.Name));
+            layout.Add(name);
+
+            var detail = new HorizontalStackLayout
+            {
+                Spacing = 4
+            };
+
+            var offset = new Label
+            {
+                FontSize = 12,
+                FontAttributes = FontAttributes.Bold
+            };
+            offset.SetBinding(Label.TextProperty,
+                new Binding(nameof(TimeZoneResource.CurrentOffset), stringFormat: "({0})"));
+            detail.Add(offset);
+            
+            var location = new Label
+            {
+                FontSize = 12,
+                FontAttributes = FontAttributes.Italic
+            };
+            location.SetBinding(Label.TextProperty, nameof(TimeZoneResource.Location));
+            detail.Add(location);
+            
+            layout.Add(detail);
+
+            // var label2 = new Label
+            // {
+            //     FontSize = 12
+            // };
+            // label2.SetBinding(Label.TextProperty, new MultiBinding
+            // {
+            //     Bindings = new List<BindingBase>()
+            //     {
+            //         new Binding(nameof(TimeZoneResource.CurrentOffset)),
+            //         new Binding(nameof(TimeZoneResource.Location))
+            //     },
+            //     StringFormat = "({0}) {1}"
+            // });
+            // layout.Add(label2);
+
+            return layout;
+        });
     }
 
     private void DisposeResources()

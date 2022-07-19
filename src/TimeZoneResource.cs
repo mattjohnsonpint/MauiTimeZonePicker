@@ -1,5 +1,3 @@
-using System.Text;
-
 namespace MauiTimeZonePicker;
 
 public class TimeZoneResource
@@ -16,22 +14,6 @@ public class TimeZoneResource
     public string CurrentOffset => Id.TimeZoneIsUtc()
         ? "UTC"
         : $"UTC{TimeZone.GetUtcOffset(DateTime.UtcNow).FormatAsOffset()}";
-
-    public override string ToString()
-    {
-        var sb = new StringBuilder();
-        
-        sb.AppendLine(Name);
-
-        sb.Append($"({CurrentOffset})");
-
-        if (Location != null)
-        {
-            sb.Append($" {Location}");
-        }
-
-        sb.AppendLine();
-
-        return sb.ToString();
-    }
+    
+    public override string ToString() => $"{Name} : ({CurrentOffset}) {Location}".TrimEnd();
 }
