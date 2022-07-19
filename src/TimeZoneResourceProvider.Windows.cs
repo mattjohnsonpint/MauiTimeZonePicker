@@ -35,8 +35,8 @@ public partial class TimeZoneResourceProvider
                     break;
                 }
 
-                // omit unmapable zone on Windows
-                if (item == "Antarctica/Troll")
+                // omit unmapable zones on Windows
+                if (item == "Antarctica/Troll" || item == "Asia/Urumqi")
                 {
                     continue;
                 }
