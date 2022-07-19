@@ -2,7 +2,6 @@
 
 public partial class MainPage
 {
-	private TimeZoneResource _selectedTimeZone;
 	private IDispatcherTimer _timer;
 
 	public MainPage()
@@ -30,27 +29,33 @@ public partial class MainPage
 		UpdateCurrentTimeText();
 	}
 
-	private void TimeZoneChanged(object sender, EventArgs e)
+	private void TimeZoneChanged(object sender, TimeZonePicker.SelectedItemChangedEventArgs e)
 	{
-		var picker = (TimeZonePicker) sender;
-		_selectedTimeZone = (TimeZoneResource) picker.SelectedItem;
 		UpdateCurrentTimeText();
-		
-		SelectedTimeZoneIdText.Text = $"Time Zone ID: {_selectedTimeZone.Id} ";
-		SelectedTimeZoneIdText.IsVisible = true;
+
+		if (e.CurrentSelection is { } selectedTimeZone)
+		{
+			SelectedTimeZoneIdText.Text = $"Time Zone ID: {selectedTimeZone.Id} ";
+			SelectedTimeZoneIdText.IsVisible = true;
+		}
+		else
+		{
+			SelectedTimeZoneIdText.IsVisible = false;
+		}
 	}
 
 	private void UpdateCurrentTimeText()
 	{
-		if (_selectedTimeZone == null)
+		if (TimeZonePicker.SelectedItem is { } selectedTimeZone)
+		{
+			var now = TimeZoneInfo.ConvertTime(DateTimeOffset.UtcNow, selectedTimeZone.TimeZone);
+			CurrentTimeText.Text = $"It is {now:F}\nin {selectedTimeZone.Location ?? selectedTimeZone.Name}";
+			CurrentTimeText.IsVisible = true;
+		}
+		else
 		{
 			CurrentTimeText.IsVisible = false;
-			return;
 		}
-
-		var now = TimeZoneInfo.ConvertTime(DateTimeOffset.UtcNow, _selectedTimeZone.TimeZone);
-		CurrentTimeText.Text = $"It is {now:F}\nin {_selectedTimeZone.Location ?? _selectedTimeZone.Name}";
-		CurrentTimeText.IsVisible = true;
 	}
 }
 

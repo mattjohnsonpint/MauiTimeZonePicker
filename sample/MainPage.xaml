@@ -16,10 +16,10 @@
                 FontSize="30"
                 HorizontalOptions="Center" />
 
-            <Border>
-                <mtzp:TimeZonePicker SelectionChanged="TimeZoneChanged" />
-            </Border>
-    
+            <mtzp:TimeZonePicker
+                x:Name="TimeZonePicker"
+                SelectedItemChanged="TimeZoneChanged" />
+
             <Label 
                 x:Name="CurrentTimeText"
                 IsVisible="False"

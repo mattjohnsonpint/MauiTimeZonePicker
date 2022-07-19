@@ -1,23 +1,65 @@
 using System.Collections;
+using Microsoft.Maui.Controls.Shapes;
 
 namespace MauiTimeZonePicker;
 
-
-public class TimeZonePicker : CollectionView, IDisposable
+public class TimeZonePicker : VerticalStackLayout, IDisposable
 {
     private readonly ITimeZoneResourceProvider _resourceProvider = new TimeZoneResourceProvider();
-    
+
     public TimeZonePicker()
     {
-        Header = "Pick a time zone...";
-        ItemsSource = (IList) _resourceProvider.GetTimeZoneResources();
-        VerticalScrollBarVisibility = ScrollBarVisibility.Always;
-        MaximumHeightRequest = 200;
-        SelectionMode = SelectionMode.Single;
+        CollectionView = GetCollectionView(_resourceProvider.GetTimeZoneResources());
+        AddContent();
+    }
 
-        ((LinearItemsLayout) ItemsLayout).ItemSpacing = 10;
+    public CollectionView CollectionView { get; }
 
-        ItemTemplate = new DataTemplate(() =>
+    public TimeZoneResource? SelectedItem => CollectionView.SelectedItem as TimeZoneResource;
+
+    public event EventHandler<SelectedItemChangedEventArgs>? SelectedItemChanged;
+    
+    private void AddContent()
+    {
+        Add(new Label
+        {
+            Text = "Pick a time zone...",
+            FontSize = 14
+        });
+
+        Add(new Border
+        {
+            StrokeShape = new Rectangle(),
+            Padding = 2,
+            Content = CollectionView
+        });
+    }
+
+    private CollectionView GetCollectionView(IEnumerable itemsSource)
+    {
+        var view = new CollectionView
+        {
+            ItemsSource = itemsSource,
+            ItemTemplate = GetItemTemplate(),
+            MaximumHeightRequest = 200,
+            SelectionMode = SelectionMode.Single
+        };
+
+        ((LinearItemsLayout) view.ItemsLayout).ItemSpacing = 10;
+
+        view.SelectionChanged += (_, args) =>
+        {
+            var previousSelection = args.PreviousSelection.FirstOrDefault() as TimeZoneResource;
+            var currentSelection = args.CurrentSelection.FirstOrDefault() as TimeZoneResource;
+            var eventArgs = new SelectedItemChangedEventArgs(previousSelection, currentSelection);
+            SelectedItemChanged?.Invoke(this, eventArgs);
+        };
+
+        return view;
+    }
+
+    private static DataTemplate GetItemTemplate() =>
+        new(() =>
         {
             var layout = new VerticalStackLayout();
 
@@ -42,7 +84,7 @@ public class TimeZonePicker : CollectionView, IDisposable
             offset.SetBinding(Label.TextProperty,
                 new Binding(nameof(TimeZoneResource.CurrentOffset), stringFormat: "({0})"));
             detail.Add(offset);
-            
+
             var location = new Label
             {
                 FontSize = 12,
@@ -50,12 +92,11 @@ public class TimeZonePicker : CollectionView, IDisposable
             };
             location.SetBinding(Label.TextProperty, nameof(TimeZoneResource.Location));
             detail.Add(location);
-            
+
             layout.Add(detail);
 
             return layout;
         });
-    }
 
     private void DisposeResources()
     {
@@ -71,5 +112,17 @@ public class TimeZonePicker : CollectionView, IDisposable
     ~TimeZonePicker()
     {
         DisposeResources();
+    }
+    
+    public class SelectedItemChangedEventArgs : EventArgs
+    {
+        public SelectedItemChangedEventArgs(TimeZoneResource? previousSelection, TimeZoneResource? currentSelection)
+        {
+            PreviousSelection = previousSelection;
+            CurrentSelection = currentSelection;
+        }
+
+        public TimeZoneResource? PreviousSelection { get; }
+        public TimeZoneResource? CurrentSelection { get; }
     }
 }
