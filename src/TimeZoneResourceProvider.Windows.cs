@@ -64,7 +64,8 @@ public class TimeZoneResourceProvider : ITimeZoneResourceProvider
 
         var location = GetPatternStringFromIcu(timeZoneId, "VVV");
 
-        // TODO: augment with region name
+        // TODO: Augment with region name.  Since there's no C API, we'll need to re-implement this:
+        // https://github.com/microsoft/icu/blob/583363f0214392b98b47019f811947309dab7c3e/icu/icu4c/source/i18n/timezone.cpp#L1134-L1157
 
         return location;
     }
