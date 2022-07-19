@@ -4,7 +4,7 @@ using Locale = Java.Util.Locale;
 
 namespace MauiTimeZonePicker;
 
-public class TimeZoneResourceProvider : ITimeZoneResourceProvider, IDisposable
+public partial class TimeZoneResourceProvider : IDisposable
 {
 private readonly Locale _locale;
     private readonly TimeZoneNames _timeZoneNames;

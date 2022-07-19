@@ -1,6 +1,6 @@
 namespace MauiTimeZonePicker;
 
-public class TimeZoneResourceProvider : ITimeZoneResourceProvider
+public partial class TimeZoneResourceProvider
 {
     public IReadOnlyList<string> GetIanaTimeZoneIds() =>
         TimeZoneInfo.GetSystemTimeZones().Select(tzi => tzi.Id).ToList();

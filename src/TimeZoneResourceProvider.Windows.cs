@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 
 namespace MauiTimeZonePicker;
 
-public class TimeZoneResourceProvider : ITimeZoneResourceProvider
+public partial class TimeZoneResourceProvider
 {
     private readonly DateTimeOffset _referenceDate = DateTimeOffset.UtcNow;
     private readonly string _locale = GetLocale();
