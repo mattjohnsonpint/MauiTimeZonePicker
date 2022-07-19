@@ -36,7 +36,7 @@ public partial class TimeZoneResourceProvider
                 }
 
                 // omit unmapable zone on Windows
-                if (item != "Antarctica/Troll")
+                if (item == "Antarctica/Troll")
                 {
                     continue;
                 }
