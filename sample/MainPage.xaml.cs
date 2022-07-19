@@ -1,6 +1,6 @@
 ﻿namespace MauiTimeZonePickerSampleApp;
 
-public partial class MainPage : ContentPage
+public partial class MainPage
 {
 	private TimeZoneResource _selectedTimeZone;
 	private IDispatcherTimer _timer;
