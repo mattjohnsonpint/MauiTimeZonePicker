@@ -15,4 +15,7 @@ internal static  class Helpers
 
     public static bool TimeZoneIsUtc(string timeZoneId) =>
         UtcAliases.Contains(timeZoneId, StringComparer.OrdinalIgnoreCase);
+
+    public static string FormatAsOffset(this TimeSpan offset) =>
+        (offset < TimeSpan.Zero ? "-" : "+") + offset.ToString(@"hh\:mm");
 }

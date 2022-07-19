@@ -7,11 +7,11 @@ public partial class TimeZoneResourceProvider : ITimeZoneResourceProvider
             .Select(id => new TimeZoneResource
             {
                 Id = id,
-                TimeZoneInfo = TimeZoneInfo.FindSystemTimeZoneById(id),
+                TimeZone = TimeZoneInfo.FindSystemTimeZoneById(id),
                 Name = GetGenericName(id),
                 Location = GetLocation(id)
             })
-            .OrderBy(r => r.TimeZoneInfo.BaseUtcOffset)
+            .OrderBy(r => r.TimeZone.BaseUtcOffset)
             .ThenBy(r => r.Name)
             .ThenBy(r => r.Location)
             .ToList();

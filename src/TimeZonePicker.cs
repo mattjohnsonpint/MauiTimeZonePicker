@@ -1,3 +1,5 @@
+using System.Collections;
+
 namespace MauiTimeZonePicker;
 
 public class TimeZonePicker : Picker
@@ -6,14 +8,6 @@ public class TimeZonePicker : Picker
     
     public TimeZonePicker()
     {
-        var zones = _resourceProvider.GetTimeZoneIds();
-        var items = zones.Select(zone =>
-        {
-            var genericName = _resourceProvider.GetGenericName(zone);
-            var location = _resourceProvider.GetLocation(zone);
-            return $"{zone} => Generic: \"{genericName}\", Location:\"{location}\"";
-        }).ToList();
-        
-        ItemsSource = items;
+        ItemsSource = (IList) _resourceProvider.GetTimeZoneResources();
     }
 }
