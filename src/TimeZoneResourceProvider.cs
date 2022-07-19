@@ -11,7 +11,7 @@ public partial class TimeZoneResourceProvider : ITimeZoneResourceProvider
                 Name = GetGenericName(id),
                 Location = GetLocation(id)
             })
-            .OrderBy(r => r.TimeZone.BaseUtcOffset)
+            .OrderBy(r => r.TimeZone.GetUtcOffset(DateTime.UtcNow))
             .ThenBy(r => r.Name)
             .ThenBy(r => r.Location)
             .ToList();
