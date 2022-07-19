@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:mtzp="clr-namespace:MauiTimeZonePicker;assembly=MauiTimeZonePicker"
+             xmlns:mjp="clr-namespace:MauiTimeZonePicker;assembly=MauiTimeZonePicker"
              x:Class="MauiTimeZonePickerSampleApp.MainPage">
 
     <ScrollView>
@@ -16,7 +16,7 @@
                 FontSize="30"
                 HorizontalOptions="Center" />
 
-            <mtzp:TimeZonePicker
+            <mjp:TimeZonePicker
                 x:Name="TimeZonePicker"
                 SelectedItemChanged="TimeZoneChanged" />
 
