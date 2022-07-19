@@ -10,12 +10,6 @@
             Padding="30,0"
             VerticalOptions="Start">
 
-            <Image
-                Source="dotnet_bot.png"
-                SemanticProperties.Description="Cute dot net bot waving hi to you!"
-                HeightRequest="200"
-                HorizontalOptions="Center" />
-
             <Label
                 Text="Time Zone Picker Demo"
                 SemanticProperties.HeadingLevel="Level1"
