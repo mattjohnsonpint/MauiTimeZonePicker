@@ -1,6 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
+		<PackageId>mjp.MauiTimeZonePicker</PackageId>
 		<Description>Time Zone Picker control for .NET MAUI</Description>
 		<Authors>Matt Johnson-Pint</Authors>
 		<PackageTags></PackageTags>
