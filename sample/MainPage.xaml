@@ -22,7 +22,13 @@
                 FontSize="32"
                 HorizontalOptions="Center" />
 
-            <mtzp:TimeZonePicker/>
+            <mtzp:TimeZonePicker SelectedIndexChanged="TimeZoneChanged" />
+            
+            <Label 
+                x:Name="CurrentTimeText"
+                IsVisible="False"
+                FontSize="32"
+                HorizontalOptions="Center" />
 
         </VerticalStackLayout>
     </ScrollView>
