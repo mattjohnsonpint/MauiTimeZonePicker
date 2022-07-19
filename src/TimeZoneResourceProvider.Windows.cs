@@ -35,6 +35,12 @@ public partial class TimeZoneResourceProvider
                     break;
                 }
 
+                // omit unmapable zone on Windows
+                if (item != "Antarctica/Troll")
+                {
+                    continue;
+                }
+                
                 list.Add(item);
             }
 
