@@ -3,6 +3,12 @@ Time Zone Picker control for .NET MAUI
 
 [![NuGet](https://img.shields.io/nuget/v/mjp.MauiTimeZonePicker)](https://www.nuget.org/packages/mjp.MauiTimeZonePicker)
 
+## Installation
+
+```shell
+dotnet add package mjp.MauiTimeZonePicker --prerelease
+```
+
 ## Screenshots
 
 ### Android
