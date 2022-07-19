@@ -18,6 +18,7 @@ public partial class MainPage
 	{
 		base.OnAppearing();
 		
+		// TODO: The timer is a bit sluggish on Android while scrolling the list of time zones.  Figure out why.
 		_timer = Dispatcher.CreateTimer();
 		_timer.Interval = TimeSpan.FromSeconds(0.1);
 		_timer.Tick += OnTimerTick;
