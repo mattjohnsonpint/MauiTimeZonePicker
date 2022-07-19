@@ -41,7 +41,7 @@ public partial class TimeZoneResourceProvider
         using var zone = new NSTimeZone(timeZoneId);
         _formatter.TimeZone = zone;
         _formatter.DateFormat = "VVV";
-        var location = _formatter.ToString(_referenceDate)?.AdjustTimeZoneDisplayText();
+        var location = _formatter.ToString(_referenceDate).AdjustTimeZoneDisplayText();
 
         // Augment with region name if possible
         if (_zoneToRegionMap.Value.TryGetValue(timeZoneId, out var regionCode))
