@@ -9,11 +9,11 @@ public class TimeZoneResource
     public string? Location { get; init; }
     public TimeZoneInfo TimeZone { get; init; } = null!;
 
-    public string BaseOffset => Helpers.TimeZoneIsUtc(Id)
+    public string BaseOffset => Id.TimeZoneIsUtc()
         ? "UTC"
         : $"UTC{TimeZone.BaseUtcOffset.FormatAsOffset()}";
     
-    public string CurrentOffset => Helpers.TimeZoneIsUtc(Id)
+    public string CurrentOffset => Id.TimeZoneIsUtc()
         ? "UTC"
         : $"UTC{TimeZone.GetUtcOffset(DateTime.UtcNow).FormatAsOffset()}";
 

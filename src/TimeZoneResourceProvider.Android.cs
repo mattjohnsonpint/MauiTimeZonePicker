@@ -26,12 +26,12 @@ private readonly Locale _locale;
     public string GetGenericName(string timeZoneId)
     {
         timeZoneId = Android.Icu.Util.TimeZone.GetCanonicalID(timeZoneId) ?? timeZoneId;
-        if (Helpers.TimeZoneIsUtc(timeZoneId))
+        if (timeZoneId.TimeZoneIsUtc())
         {
             return _timeZoneNames.GetTimeZoneDisplayName(timeZoneId, TimeZoneNames.NameType.LongStandard)!;
         }
         
-        var name = _timeZoneNames.GetDisplayName(timeZoneId, TimeZoneNames.NameType.LongGeneric, _referenceDate.Time)!;
+        var name = _timeZoneNames.GetDisplayName(timeZoneId, TimeZoneNames.NameType.LongGeneric, _referenceDate.Time);
 
         if (string.IsNullOrWhiteSpace(name))
         {
@@ -41,12 +41,12 @@ private readonly Locale _locale;
             name = _genericTzFormatter.Format(_referenceDate);
         }
 
-        return name ?? "";
+        return name!;
     }
 
     public string? GetLocation(string timeZoneId)
     {
-        if (Helpers.TimeZoneIsUtc(timeZoneId))
+        if (timeZoneId.TimeZoneIsUtc())
         {
             return null;
         }
@@ -54,7 +54,7 @@ private readonly Locale _locale;
         timeZoneId = Android.Icu.Util.TimeZone.GetCanonicalID(timeZoneId) ?? timeZoneId;
         
         // Get the exemplar location for the time zone
-        var location = _timeZoneNames.GetExemplarLocationName(timeZoneId);
+        var location = _timeZoneNames.GetExemplarLocationName(timeZoneId)?.AdjustTimeZoneDisplayText();
         
         // Augment with region name if possible
         if (Android.Icu.Util.TimeZone.GetRegion(timeZoneId) is { } regionCode)

@@ -31,7 +31,7 @@ public partial class TimeZoneResourceProvider : IDisposable
 
     public string? GetLocation(string timeZoneId)
     {
-        if (Helpers.TimeZoneIsUtc(timeZoneId))
+        if (timeZoneId.TimeZoneIsUtc())
         {
             return null;
         }

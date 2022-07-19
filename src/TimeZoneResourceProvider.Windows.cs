@@ -57,13 +57,13 @@ public partial class TimeZoneResourceProvider
 
     public string GetGenericName(string timeZoneId)
     {
-        var pattern = Helpers.TimeZoneIsUtc(timeZoneId) ? "zzzz" : "vvvv";
+        var pattern = timeZoneId.TimeZoneIsUtc() ? "zzzz" : "vvvv";
         return GetPatternStringFromIcu(timeZoneId, pattern)!;
     }
 
     public string? GetLocation(string timeZoneId)
     {
-        if (Helpers.TimeZoneIsUtc(timeZoneId))
+        if (timeZoneId.TimeZoneIsUtc())
         {
             return null;
         }

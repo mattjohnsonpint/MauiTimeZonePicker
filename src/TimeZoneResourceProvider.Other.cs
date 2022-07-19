@@ -11,7 +11,7 @@ public partial class TimeZoneResourceProvider
         var displayName = tzi.DisplayName;
 
         // strip off the leading "(UTC+00:00) " offset string
-        return displayName.Substring(displayName.IndexOf(')') + 1);
+        return displayName[(displayName.IndexOf(')') + 1)..];
     }
 
     public string? GetLocation(string timeZoneId)
