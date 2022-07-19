@@ -46,6 +46,11 @@ private readonly Locale _locale;
 
     public string? GetLocation(string timeZoneId)
     {
+        if (Helpers.TimeZoneIsUtc(timeZoneId))
+        {
+            return null;
+        }
+        
         timeZoneId = Android.Icu.Util.TimeZone.GetCanonicalID(timeZoneId) ?? timeZoneId;
         
         // Get the exemplar location for the time zone

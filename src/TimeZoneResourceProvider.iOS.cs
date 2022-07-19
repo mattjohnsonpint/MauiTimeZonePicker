@@ -31,6 +31,11 @@ public partial class TimeZoneResourceProvider : IDisposable
 
     public string? GetLocation(string timeZoneId)
     {
+        if (Helpers.TimeZoneIsUtc(timeZoneId))
+        {
+            return null;
+        }
+        
         // Get the exemplar location for the time zone
         // See https://unicode-org.github.io/icu/userguide/format_parse/datetime/#date-field-symbol-table
         using var zone = new NSTimeZone(timeZoneId);

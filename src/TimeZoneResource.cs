@@ -23,14 +23,14 @@ public class TimeZoneResource
         
         sb.AppendLine(Name);
 
+        sb.Append($"({CurrentOffset})");
+
         if (Location != null)
         {
-            sb.AppendLine($"({CurrentOffset}) {Location}");
+            sb.Append($" {Location}");
         }
-        else
-        {
-            sb.AppendLine(Location);
-        }
+
+        sb.AppendLine();
 
         return sb.ToString();
     }

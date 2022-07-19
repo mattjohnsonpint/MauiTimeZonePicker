@@ -27,7 +27,15 @@
             <Label 
                 x:Name="CurrentTimeText"
                 IsVisible="False"
+                FontSize="14"
+                HorizontalTextAlignment="Center"
+                HorizontalOptions="Center" />
+            
+            <Label 
+                x:Name="SelectedTimeZoneIdText"
+                IsVisible="False"
                 FontSize="12"
+                FontAttributes="Italic"
                 HorizontalOptions="Center" />
 
         </VerticalStackLayout>
