@@ -1,6 +1,6 @@
 namespace MauiTimeZonePicker;
 
-public partial class TimeZoneResourceProvider : ITimeZoneResourceProvider
+public partial class TimeZoneResourceProvider : ITimeZoneResourceProvider, IDisposable
 {
     public IReadOnlyList<TimeZoneResource> GetTimeZoneResources() =>
         GetTimeZoneIds()
@@ -15,4 +15,15 @@ public partial class TimeZoneResourceProvider : ITimeZoneResourceProvider
             .ThenBy(r => r.Name)
             .ThenBy(r => r.Location)
             .ToList();
+    
+    public void Dispose()
+    {
+        DisposeResources();
+        GC.SuppressFinalize(this);
+    }
+
+    ~TimeZoneResourceProvider()
+    {
+        DisposeResources();
+    }
 }

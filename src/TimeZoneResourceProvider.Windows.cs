@@ -105,6 +105,11 @@ public partial class TimeZoneResourceProvider
         var locale = CultureInfo.CurrentUICulture.Name;
         return locale.Length == 0 ? "en-US" : locale;
     }
+    
+    private void DisposeResources()
+    {
+        // Nothing to dispose for this implementation
+    }
 
     private class NativeMethods
     {

@@ -19,4 +19,9 @@ public partial class TimeZoneResourceProvider
         // Not available from TimeZoneInfo by default
         return null;
     }
+
+    private void DisposeResources()
+    {
+        // Nothing to dispose for this implementation
+    }
 }

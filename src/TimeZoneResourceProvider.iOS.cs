@@ -2,7 +2,7 @@ namespace MauiTimeZonePicker;
 
 using Foundation;
 
-public partial class TimeZoneResourceProvider : IDisposable
+public partial class TimeZoneResourceProvider
 {
     private readonly NSDateFormatter _formatter = new();
     private readonly NSLocale _locale = NSLocale.CurrentLocale;
@@ -56,7 +56,7 @@ public partial class TimeZoneResourceProvider : IDisposable
         return string.IsNullOrWhiteSpace(location) ? null : location;
     }
 
-    public void Dispose()
+    private void DisposeResources()
     {
         _formatter.Dispose();
         _locale.Dispose();
