@@ -4,7 +4,7 @@ Time Zone Picker control for .NET MAUI
 [![NuGet](https://img.shields.io/nuget/v/mjp.MauiTimeZonePicker)](https://www.nuget.org/packages/mjp.MauiTimeZonePicker)
 [![MIT Licensed](https://img.shields.io/github/license/mattjohnsonpint/MauiTimeZonePicker)](https://github.com/mattjohnsonpint/MauiTimeZonePicker/blob/main/LICENSE)
 
-As featured in the blog post here:
+Read all about it:
 https://blog.sentry.io/2022/07/19/making-a-time-zone-picker-control-for-net-maui
 
 ## Installation
